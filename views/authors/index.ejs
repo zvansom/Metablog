@@ -1,1 +1,9 @@
 <h1>Authors and junk</h1>
+<% authors.forEach( a => { %>
+  <div>
+    <a href="/authors/<%= a.id %>">
+      <%= a.name %>
+    </a>
+  </div>
+  <hr />
+<% }); %>

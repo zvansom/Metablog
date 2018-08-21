@@ -1,10 +1,13 @@
 // Requires
 const express = require('express');
 const router = express.Router();
+const db = require('../models');
 
 // Route
 router.get('/', (req, res) => {
-  res.render('authors/index');
+  db.author.findAll()
+  .then( allAuthors => { res.render('authors/index', { authors: allAuthors }) })
+  .catch( err => { res.send('Error getting all authors')} );
 });
 
 router.get('/new', (req, res) => {
@@ -12,11 +15,17 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  res.send('author id');
+  db.author.findOne({
+    where: { id: req.params.id },
+    include: [db.article] })
+  .then( foundAuthor => { res.render('authors/show', {author: foundAuthor}) })
+  .catch( err => res.send('error getting author') );
 });
 
 router.post('/', (req, res) => {
-  res.send('posted author');
+  db.author.create(req.body)
+  .then( createdAuthor => { res.redirect('/authors/' + createdAuthor.id); })
+  .catch( err => res.send('error creating author') );
 });
 
 module.exports = router;

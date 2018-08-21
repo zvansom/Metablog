@@ -1,4 +1,4 @@
-<form class="w-50 border border-light rounded mx-auto pt-3 pb-5 px-3 mt-3">
+<form class="w-50 border border-light rounded mx-auto pt-3 pb-5 px-3 mt-3" method="POST" action="/authors">
   <h2>New author</h2>
   <div class="form-group">
     <label for="name">Name:</label>
@@ -10,7 +10,7 @@
   </div>
   <div class="form-group">
     <label for="image-link">Link your picture</label>
-    <input type="text" class="form-control" placeholder="https://www.yourawesomepicture.com" name="image" />
+    <input type="url" class="form-control" placeholder="https://www.yourawesomepicture.com" name="image" />
   </div>
   <div class="form-group">
     <input class="btn btn-outline-primary float-right" type="submit" value="submit" />

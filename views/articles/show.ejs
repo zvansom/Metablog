@@ -1,0 +1,10 @@
+<h1><%= article.title %></h1>
+<h3>By <a href="/authors/<%=article.author.id%>"><%= article.author.name %></a></h3>
+
+<div class="row">
+  <div class="col-6">
+    <p>
+      <%= article.content %>
+    </p>
+  </div>
+</div>
