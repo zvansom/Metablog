@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/new', (req, res) => {
-  res.send('new article');
+  res.render('articles/new');
 });
 
 router.get('/:id', (req, res) => {
