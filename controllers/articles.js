@@ -25,9 +25,11 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  db.article.create(req.body)
-  .then( createdArticle => { res.redirect('/articles/' + createdArticle.id) })
-  .catch( err => res.send('error creating article') );
+  if (req.body.authorID !== 0){
+    db.article.create(req.body)
+    .then( createdArticle => { res.redirect('/articles/' + createdArticle.id) })
+    .catch( err => res.send('error creating article') );
+  }
 });
 
 module.exports = router;
