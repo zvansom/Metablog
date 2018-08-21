@@ -10,6 +10,7 @@ const app = express();
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
 app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.static(__dirname + '/public/'));
 
 // Include controllers/routers
 app.use('/articles', require('./controllers/articles'));
