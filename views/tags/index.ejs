@@ -1,8 +1,14 @@
 <h1>Found some tags for you.</h1>
 <% tags.forEach( t => { %>
   <div>
-    <a href="/tags/<%= t.id %>">
+    <a href="/tags/<%= t.id %>" style="font-size:28px">
       #<%= t.name %>
+    </a>
+    <a href="/tags/edit/<%=t.id%>" class="btn btn-sm btn-warning">
+    Edit this tag
+    </a>
+    <a href="/tags/<%=t.id%>" class="btn btn-sm btn-danger delete-btn">
+    Delete this tag
     </a>
   </div>
   <hr />
