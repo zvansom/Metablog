@@ -7,7 +7,7 @@ const db = require('../models');
 router.get('/', (req, res) => {
   db.author.findAll()
   .then( allAuthors => { res.render('authors/index', { authors: allAuthors }) })
-  .catch( err => { res.send('Error getting all authors')} );
+  .catch( err => { res.render('error')} );
 });
 
 router.get('/new', (req, res) => {
@@ -19,13 +19,13 @@ router.get('/:id', (req, res) => {
     where: { id: req.params.id },
     include: [db.article] })
   .then( foundAuthor => { res.render('authors/show', {author: foundAuthor}) })
-  .catch( err => res.send('error getting author') );
+  .catch( err => res.render('error') );
 });
 
 router.post('/', (req, res) => {
   db.author.create(req.body)
   .then( createdAuthor => { res.redirect('/authors/' + createdAuthor.id); })
-  .catch( err => res.send('error creating author') );
+  .catch( err => res.render('error') );
 });
 
 module.exports = router;

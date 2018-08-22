@@ -15,11 +15,13 @@ app.use(express.static(__dirname + '/public/'));
 // Include controllers/routers
 app.use('/articles', require('./controllers/articles'));
 app.use('/authors', require('./controllers/authors'));
+app.use('/comments', require('./controllers/comments'));
+app.use('/tags', require('./controllers/tags'));
 
 // Route
-app.get('/', (req, res) => {
-  res.render('home');
-});
+app.get('/', (req, res) => res.render('home') );
+
+app.get('*', (req, res) => res.render('error') );
 
 // Listen
 app.listen(3000, function() {

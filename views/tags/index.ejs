@@ -1,0 +1,9 @@
+<h1>Found some tags for you.</h1>
+<% tags.forEach( t => { %>
+  <div>
+    <a href="/tags/<%= t.id %>">
+      #<%= t.name %>
+    </a>
+  </div>
+  <hr />
+<% }); %>
